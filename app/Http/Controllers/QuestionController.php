@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\QuestionOptionsResource;
 use App\Models\Question;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 
 use App\Http\Resources\QuestionResource;
 
-class QuestionController extends Controller
+class QuestionController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -17,8 +18,13 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $question = Question::get();
-        return  $this->QuestionResource::collection($question);
+        $questions = Question::get();
+        return  $this->successResponse(QuestionResource::collection($questions));
+    }
+
+    public function get_question_with_options(){
+        $questions = Question::get();
+        return  $this->successResponse(QuestionOptionsResource::collection($questions));
     }
 
     /**

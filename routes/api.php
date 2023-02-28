@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OptionController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\QuestionController;
@@ -27,6 +28,11 @@ Route::group(array('prefix' => 'dev'), function() {
 
 
     //Question
-    Route::get("getAllQuestions", [QuestionController::class,'index']);
+    Route::get("questions", [QuestionController::class,'index']);
+    Route::get("questionsWithOptions", [QuestionController::class,'get_question_with_options']);
+
+    //Option
+    Route::get("options", [OptionController::class,'index']);
+    Route::get("options/{question_id}", [OptionController::class,'get_all_option_by_question_id']);
 
 });

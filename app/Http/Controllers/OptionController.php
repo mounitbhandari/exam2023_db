@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\OptionResource;
 use App\Models\Option;
 use App\Http\Requests\StoreOptionRequest;
 use App\Http\Requests\UpdateOptionRequest;
+use App\Models\Question;
 
-class OptionController extends Controller
+class OptionController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +17,8 @@ class OptionController extends Controller
      */
     public function index()
     {
-        //
+        $options = Option::get();
+        return  $this->successResponse(OptionResource::collection($options));
     }
 
     /**
@@ -23,9 +26,10 @@ class OptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function get_all_option_by_question_id($question_id)
     {
-        //
+        $options = Question::findOrFail($question_id)->options;
+        return  $this->successResponse($options);
     }
 
     /**

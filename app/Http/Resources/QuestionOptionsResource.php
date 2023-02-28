@@ -2,16 +2,10 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Question;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-/**
- * @property mixed id
- * @property mixed question_level_id
- * @property mixed chapter_id
- * @property mixed question_type_id
- * @property mixed question
- */
-class QuestionResource extends JsonResource
+class QuestionOptionsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -27,6 +21,7 @@ class QuestionResource extends JsonResource
             'chapterId' => $this->chapter_id,
             'questionTypeId' => $this->question_type_id,
             'question' => $this->question,
+            'options' => OptionResource::collection(Question::find($this->id)->options)
         ];
     }
 }

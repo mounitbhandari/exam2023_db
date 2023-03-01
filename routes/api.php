@@ -33,6 +33,7 @@ Route::group(array('prefix' => 'dev'), function() {
     //Question
     Route::get("questions", [QuestionController::class,'index']);
     Route::get("questionsWithOptions", [QuestionController::class,'get_question_with_options']);
+    Route::get("questionsBySubjectId/{subjectId}", [QuestionController::class,'get_question_by_subject_id']);
 
     //Option
     Route::get("options", [OptionController::class,'index']);

@@ -3,6 +3,7 @@
 namespace App\Http\Resources;
 
 use App\Models\Question;
+use App\Models\Subject;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -31,7 +32,8 @@ class SubjectQuestionResource extends JsonResource
             'subjectDuration' => $this->subject_duration,
             'durationTypeId' => $this->duration_type_id,
             'subjectDescription' => $this->subject_description,
-            'questions' => Question::find($this->id)
+            'questions' => QuestionOptionsResource::collection(Subject::find($this->id)->questions)
+//            'questions' => QuestionResource::collection(Subject::find($this->id)->questions)
         ];;
     }
 }

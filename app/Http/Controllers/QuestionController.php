@@ -8,6 +8,7 @@ use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
 
 use App\Http\Resources\QuestionResource;
+use App\Models\Subject;
 
 class QuestionController extends ApiController
 {
@@ -24,6 +25,11 @@ class QuestionController extends ApiController
 
     public function get_question_with_options(){
         $questions = Question::get();
+        return  $this->successResponse(QuestionOptionsResource::collection($questions));
+    }
+
+    public function get_question_by_subject_id($subject_id){
+        $questions = Subject::findOrFail($subject_id)->questions;
         return  $this->successResponse(QuestionOptionsResource::collection($questions));
     }
 

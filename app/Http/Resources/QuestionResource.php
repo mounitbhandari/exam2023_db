@@ -10,6 +10,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
  * @property mixed chapter_id
  * @property mixed question_type_id
  * @property mixed question
+ * @property mixed subject_id
  */
 class QuestionResource extends JsonResource
 {
@@ -26,6 +27,7 @@ class QuestionResource extends JsonResource
             'questionLevelId' => $this->question_level_id,
             'chapterId' => $this->chapter_id,
             'questionTypeId' => $this->question_type_id,
+            'subjectId' => $this->subject_id,
             'question' => $this->question,
         ];
     }

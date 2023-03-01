@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SubjectQuestionResource;
+use App\Http\Resources\SubjectResource;
 use App\Models\Subject;
 use App\Http\Requests\StoreSubjectRequest;
 use App\Http\Requests\UpdateSubjectRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
-class SubjectController extends Controller
+class SubjectController extends ApiController
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +20,16 @@ class SubjectController extends Controller
     public function get_subject()
     {
         $subject = Subject::get();
-        return $subject;
+        return $this->successResponse(SubjectResource::collection($subject));
     }
+
+    public function get_all_subjects_with_question()
+    {
+        $subjects = Subject::get();
+        return $this->successResponse(SubjectQuestionResource::collection($subjects));
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

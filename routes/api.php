@@ -22,7 +22,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group(array('prefix' => 'dev'), function() {
-    Route::get("getSubjects", [SubjectController::class,'get_subject']);
+
+    //Subjects
+    Route::get("subjects", [SubjectController::class,'get_subject']);
+    Route::get("subjectsWithQuestions", [SubjectController::class,'get_all_subjects_with_question']);
     Route::post("saveSubject", [SubjectController::class,'save_subject']);
     Route::patch("updateSubject", [SubjectController::class,'update_subject']);
 

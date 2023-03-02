@@ -19,6 +19,7 @@ class ChapterController extends ApiController
     {
         $chapters = Chapter::get();
         return $this->successResponse(ChapterResource::collection($chapters));
+
     }
 
     public function get_all_chapters_with_question()

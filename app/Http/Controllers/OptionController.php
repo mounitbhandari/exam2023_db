@@ -29,7 +29,7 @@ class OptionController extends ApiController
     public function get_all_option_by_question_id($question_id)
     {
         $options = Question::findOrFail($question_id)->options;
-        return  $this->successResponse($options);
+        return  $this->successResponse(OptionResource::collection($options));
     }
 
     /**

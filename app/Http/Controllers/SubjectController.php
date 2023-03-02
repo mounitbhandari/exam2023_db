@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\ChapterQuestionResource;
+use App\Http\Resources\SubjectChapterResource;
 use App\Http\Resources\SubjectQuestionResource;
 use App\Http\Resources\SubjectResource;
 use App\Models\Subject;
@@ -23,10 +25,10 @@ class SubjectController extends ApiController
         return $this->successResponse(SubjectResource::collection($subject));
     }
 
-    public function get_all_subjects_with_question()
+    public function get_all_subjects_with_chapters()
     {
         $subjects = Subject::get();
-        return $this->successResponse(SubjectQuestionResource::collection($subjects));
+        return $this->successResponse(SubjectChapterResource::collection($subjects));
     }
 
 

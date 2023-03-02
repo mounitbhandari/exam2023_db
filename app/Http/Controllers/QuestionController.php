@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\QuestionOptionsResource;
+use App\Models\Chapter;
 use App\Models\Question;
 use App\Http\Requests\StoreQuestionRequest;
 use App\Http\Requests\UpdateQuestionRequest;
@@ -28,9 +29,9 @@ class QuestionController extends ApiController
         return  $this->successResponse(QuestionOptionsResource::collection($questions));
     }
 
-    public function get_question_by_subject_id($subject_id){
-        $questions = Subject::findOrFail($subject_id)->questions;
-        return  $this->successResponse(QuestionOptionsResource::collection($questions));
+    public function get_question_by_chapter_id($chapter_id){
+        $questions = Chapter::findOrFail($chapter_id)->questions;
+        return  $this->successResponse(QuestionResource::collection($questions));
     }
 
     /**

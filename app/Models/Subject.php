@@ -9,7 +9,7 @@ class Subject extends Model
 {
     use HasFactory;
 
-    public function questions(){
-        return $this->hasMany(Question::class, 'subject_id');
+    public function chapters(){
+        return $this->hasMany(Chapter::class, 'subject_id');
     }
 }

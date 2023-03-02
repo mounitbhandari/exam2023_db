@@ -2,19 +2,18 @@
 
 namespace App\Http\Resources;
 
-use App\Models\Question;
 use App\Models\Subject;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * @property mixed id
- * @property mixed subject_description
- * @property mixed duration_type_id
- * @property mixed subject_duration
- * @property mixed subject_short_name
  * @property mixed subject_code
+ * @property mixed subject_short_name
+ * @property mixed subject_duration
+ * @property mixed duration_type_id
+ * @property mixed subject_description
  */
-class SubjectQuestionResource extends JsonResource
+class SubjectChapterResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -32,8 +31,7 @@ class SubjectQuestionResource extends JsonResource
             'subjectDuration' => $this->subject_duration,
             'durationTypeId' => $this->duration_type_id,
             'subjectDescription' => $this->subject_description,
-//            'chapters' => QuestionOptionsResource::collection(Subject::find($this->id)->questions)
-//            'questions' => QuestionResource::collection(Subject::find($this->id)->questions)
+            'chapters' => Subject::find($this->id)->chapters
         ];
     }
 }

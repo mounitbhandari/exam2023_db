@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Question;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
@@ -27,6 +28,8 @@ class QuestionResource extends JsonResource
             'questionLevelId' => $this->question_level_id,
             'chapterId' => $this->chapter_id,
             'questionTypeId' => $this->question_type_id,
+            //'questionType' => Question::find($this->question_type_id)->question_type,
+            'marks' => (Question::find($this->question_type_id)->question_type)->marks,
             'subjectId' => $this->subject_id,
             'question' => $this->question,
         ];

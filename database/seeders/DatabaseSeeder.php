@@ -39,13 +39,13 @@ class DatabaseSeeder extends Seeder
 
 
 
-        
+
 
 
         QuestionType::insert([
-            ['question_type_name'=>'MCQ'],
-            ['question_type_name'=>'Descriptive'],
-            ['question_type_name'=>'True False']
+            ['question_type_name'=>'MCQ', 'marks' => 1],
+            ['question_type_name'=>'Descriptive', 'marks' => 3],
+            ['question_type_name'=>'True False', 'marks' => 1]
         ]);
 
 
@@ -81,7 +81,7 @@ class DatabaseSeeder extends Seeder
             /**/    ['subject_code'=>'JICSE','subject_short_name'=>'JAVA ICSE','subject_full_name'=>'JAVA for ICSE','subject_duration'=>00,'duration_type_id' => '1','subject_description'=>'JAVA for ICSE'],
         ]);
 
-        
+
 
         Chapter::insert([
             ['chapter_name' => 'Python Datatype', 'subject_id' => 10],
@@ -5706,11 +5706,11 @@ Consider you are developing shopping cart application you have to store details 
 
 
 
-        
-       
 
 
-      
-    
+
+
+
+
 
 }

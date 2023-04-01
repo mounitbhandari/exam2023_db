@@ -27,7 +27,7 @@ Route::group(array('prefix' => 'dev'), function() {
     //Subjects
     Route::get("subjects", [SubjectController::class,'get_subject']);
     Route::get("subjectsWithChapters", [SubjectController::class,'get_all_subjects_with_chapters']);
-    Route::post("saveSubject", [SubjectController::class,'save_subject']);
+    Route::post("subject", [SubjectController::class,'save_subject']);
     Route::patch("updateSubject", [SubjectController::class,'update_subject']);
 
     //chapters
